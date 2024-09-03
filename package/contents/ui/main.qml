@@ -86,18 +86,18 @@ PlasmoidItem {
     }
 
     function runClickAction(action, command) {
-        if (action === 1) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Show Desktop'");
-        } else if (action === 2) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut Overview");
-        } else if (action === 3) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut 'Grid View'");
-        } else if (action === 4) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut ExposeAll");
-        } else if (action === 5) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut Expose");
-        } else if (action === 6) {
-            executable.exec("/usr/lib/qt6/bin/qdbus org.kde.kglobalaccel /component/kwin invokeShortcut ExposeClass");
+        const shortcuts = [
+            "Show Desktop",
+            "Overview",
+            "Grid View",
+            "ExposeAll",
+            "Expose",
+            "ExposeClass",
+        ];
+        const shortcut = shortcuts[action - 1];
+
+        if (shortcut) {
+            executable.exec(`dbus-send --dest=org.kde.kglobalaccel --type=method_call /component/kwin org.kde.kglobalaccel.Component.invokeShortcut string:"${shortcut}"`);
         } else if (action === 7) {
             executable.exec(command);
         }
