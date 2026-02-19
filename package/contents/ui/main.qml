@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2023 eatsu <mkrmdk@gmail.com>
+    SPDX-FileCopyrightText: 2025 Emma MB <emma@meredithblack.com>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */

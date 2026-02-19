@@ -33,16 +33,10 @@ Instead, place this widget on each side.
 ### From the source
 
 ```sh
-git clone https://github.com/eatsu/plasmoid-spacer-as-pager.git
+git clone https://github.com/testsnake/plasmoid-spacer-as-pager.git
 cd plasmoid-spacer-as-pager
 kpackagetool6 -t Plasma/Applet -i package
 ```
-
-## TODO
-
-- Allow directly switching virtual desktops via the context menu.
-- Allow displaying the current desktop name.
-- Bundle the icon into the package (if possible).
 
 ## License
 
@@ -50,5 +44,6 @@ GPLv2+
 
 ## References
 
+- [Original Spacer as Pager by eatsu](https://github.com/eatsu/plasmoid-spacer-as-pager)
 - [Panel Spacer](https://invent.kde.org/plasma/plasma-workspace/-/tree/master/applets/panelspacer)
 - [Pager](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/applets/pager)

@@ -5,18 +5,22 @@
             {
                 "Email": "mkrmdk@gmail.com",
                 "Name": "eatsu"
+            },
+            {
+                "Email": "emma@meredithblack.com",
+                "Name": "Emma MB"
             }
         ],
-        "BugReportUrl": "https://github.com/eatsu/plasmoid-spacer-as-pager/issues",
+        "BugReportUrl": "https://github.com/testsnake/plasmoid-spacer-as-pager/issues",
         "Category": "Windows and Tasks",
         "Description": "A panel spacer with virtual desktop switching",
         "EnabledByDefault": true,
         "Icon": "user-desktop",
-        "Id": "com.github.eatsu.spaceraspager",
+        "Id": "com.github.testsnake.spaceraspager",
         "License": "GPL-2.0+",
         "Name": "Spacer as Pager",
-        "Version": "2.0.1",
-        "Website": "https://github.com/eatsu/plasmoid-spacer-as-pager"
+        "Version": "2.1.0",
+        "Website": "https://github.com/testsnake/plasmoid-spacer-as-pager"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": [
