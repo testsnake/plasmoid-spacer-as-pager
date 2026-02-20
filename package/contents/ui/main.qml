@@ -96,7 +96,7 @@ PlasmoidItem {
             const current = parseInt(data["stdout"].trim());
             if (!isNaN(current)) {
                 const next = pendingForward ? current + 1 : current - 1;
-                executable.exec(`qdbus6 org.kde.KWin /KWin setCurrentDesktop ${next}`);
+                executable.exec(`dbus-send --session --type=method_call --dest=org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop int32:${next}`);
             }
         }
     }
@@ -122,10 +122,10 @@ PlasmoidItem {
     function switchDesktop(forward) {
         if (Plasmoid.configuration.wrapPage) {
             const method = forward ? "nextDesktop" : "previousDesktop";
-            executable.exec(`qdbus6 org.kde.KWin /KWin ${method}`);
+            executable.exec(`dbus-send --session --type=method_call --dest=org.kde.KWin /KWin org.kde.KWin.${method}`);
         } else {
             desktopQuery.pendingForward = forward;
-            desktopQuery.connectSource("qdbus6 org.kde.KWin /KWin currentDesktop");
+            desktopQuery.connectSource("dbus-send --session --print-reply --dest=org.kde.KWin /KWin org.kde.KWin.currentDesktop | awk '/int32/{print $2}'");
         }
     }
 
