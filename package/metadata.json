@@ -19,7 +19,7 @@
         "Id": "com.github.testsnake.spaceraspager",
         "License": "GPL-2.0+",
         "Name": "Spacer as Pager",
-        "Version": "2.1.0",
+        "Version": "2.1.1",
         "Website": "https://github.com/testsnake/plasmoid-spacer-as-pager"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
