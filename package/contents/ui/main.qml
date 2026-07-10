@@ -134,6 +134,14 @@ PlasmoidItem {
         anchors.fill: parent
 
         property int wheelDelta: 0
+        property bool wheelLocked: false
+
+        Timer {
+            id: wheelCooldown
+            interval: 300
+            repeat: false
+            onTriggered: mouseArea.wheelLocked = false
+        }
 
         acceptedButtons: {
             if (Plasmoid.configuration.rightClickAction > 0) {
@@ -168,27 +176,26 @@ PlasmoidItem {
         }
 
         onWheel: wheel => {
-            // Magic number 120 for common "one click", see:
-            // https://doc.qt.io/qt-5/qml-qtquick-wheelevent.html#angleDelta-prop
+            if (wheelLocked) {
+                wheel.accepted = true;
+                return;
+            }
+
             wheelDelta += wheel.angleDelta.y || wheel.angleDelta.x;
 
-            let increment = 0;
-
-            while (wheelDelta >= 120) {
-                wheelDelta -= 120;
-                increment++;
-            }
-
-            while (wheelDelta <= -120) {
-                wheelDelta += 120;
-                increment--;
-            }
-
-            while (increment !== 0) {
-                switchDesktop(increment < 0);
-                increment += (increment < 0) ? 1 : -1;
+            if (wheelDelta >= 120) {
                 wheelDelta = 0;
+                wheelLocked = true;
+                wheelCooldown.restart();
+                switchDesktop(false);
+            } else if (wheelDelta <= -120) {
+                wheelDelta = 0;
+                wheelLocked = true;
+                wheelCooldown.restart();
+                switchDesktop(true);
             }
+
+            wheel.accepted = true;
         }
     }
 
