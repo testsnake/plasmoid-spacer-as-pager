@@ -176,7 +176,7 @@ PlasmoidItem {
         }
 
         onWheel: wheel => {
-            if (wheelLocked) {
+            if (Plasmoid.configuration.lockWheelGesture && wheelLocked) {
                 wheel.accepted = true;
                 return;
             }
@@ -185,8 +185,12 @@ PlasmoidItem {
 
             if (wheelDelta >= 120) {
                 wheelDelta = 0;
-                wheelLocked = true;
-                wheelCooldown.restart();
+                
+                if (Plasmoid.configuration.lockWheelGesture) {
+                    wheelLocked = true;
+                    wheelCooldown.restart();
+                }
+
                 switchDesktop(false);
             } else if (wheelDelta <= -120) {
                 wheelDelta = 0;
