@@ -21,6 +21,12 @@
         <label>Whether to wrap page when navigating with the spacer.</label>
         <default>false</default>
     </entry>
+
+    <entry name="lockWheelGesture" type="Bool">
+        <label>Limit one workspace switch per mouse wheel gesture.</label>
+        <default>true</default>
+    </entry>
+
     <entry name="leftClickAction" type="Enum">
         <label>What to do on left-mouse click on the spacer.</label>
         <choices>

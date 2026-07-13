@@ -13,6 +13,7 @@ import org.kde.kcmutils as KCM
 
 KCM.SimpleKCM {
     property alias cfg_wrapPage: wrapPage.checked
+    property alias cfg_lockWheelGesture: lockWheelGesture.checked
     property alias cfg_leftClickAction: leftClickAction.currentIndex
     property alias cfg_leftClickCommand: leftClickCommand.text
     property alias cfg_middleClickAction: middleClickAction.currentIndex
@@ -37,6 +38,11 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Mouse wheel:")
             id: wrapPage
             text: i18n("Navigation wraps around")
+        }
+
+        CheckBox {
+            id: lockWheelGesture
+            text: i18n("Limit one workspace per wheel gesture")
         }
 
         Item {
